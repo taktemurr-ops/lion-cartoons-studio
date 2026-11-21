@@ -7,7 +7,9 @@ out.mkdir(parents=True, exist_ok=True)
 bpy.ops.object.select_all(action="SELECT")
 bpy.ops.object.delete(use_global=False)
 s = bpy.context.scene
-s.render.engine = "CYCLES"\ns.cycles.device = "CPU"\ns.cycles.samples = 4
+s.render.engine = "CYCLES"
+s.cycles.device = "CPU"
+s.cycles.samples = 4
 s.frame_start, s.frame_end, s.render.fps = 1, 24, 24
 s.render.resolution_x, s.render.resolution_y = 320, 180
 s.render.resolution_percentage = 100
