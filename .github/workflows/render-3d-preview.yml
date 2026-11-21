@@ -1,6 +1,11 @@
 name: Render 3D motion proof-of-concept
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'production/blender/**'
+      - '.github/workflows/render-3d-preview.yml'
 permissions:
   contents: read
 jobs:
