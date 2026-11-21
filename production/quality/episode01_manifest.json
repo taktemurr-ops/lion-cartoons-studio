@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "project": "Lion Cartoons",
+  "series": "Leo & Lila",
+  "episode": "S01E01",
+  "title": "Uçan Tohumlar",
+  "target_seconds": 420,
+  "frame_rate": 24,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "status": "preproduction",
+  "publish_approved": false,
+  "characters": [
+    {
+      "id": "leo",
+      "asset": "assets/characters/leo/leo_rig.blend",
+      "required": [
+        "body_mesh",
+        "armature",
+        "facial_shapes",
+        "walk_cycle",
+        "run_cycle",
+        "reaction_library"
+      ]
+    },
+    {
+      "id": "lila",
+      "asset": "assets/characters/lila/lila_rig.blend",
+      "required": [
+        "body_mesh",
+        "armature",
+        "facial_shapes",
+        "walk_cycle",
+        "hop_cycle",
+        "reaction_library"
+      ]
+    },
+    {
+      "id": "bobo",
+      "asset": "assets/characters/bobo/bobo_rig.blend",
+      "required": [
+        "body_mesh",
+        "armature",
+        "facial_shapes",
+        "drum_cycle",
+        "reaction_library"
+      ]
+    }
+  ],
+  "environment": {
+    "asset": "assets/environments/garden/garden_master.blend",
+    "required": [
+      "garden",
+      "waterwheel",
+      "seed_machine",
+      "plants",
+      "lighting"
+    ]
+  },
+  "shots": [
+    {
+      "id": "010",
+      "start_seconds": 0,
+      "end_seconds": 35,
+      "deliverable": "production/renders/010.mp4",
+      "story": "Sabah bahçesi, karakter tanıtımı"
+    },
+    {
+      "id": "020",
+      "start_seconds": 35,
+      "end_seconds": 90,
+      "deliverable": "production/renders/020.mp4",
+      "story": "Tohum ekme icadı ve ilk şans"
+    },
+    {
+      "id": "030",
+      "start_seconds": 90,
+      "end_seconds": 155,
+      "deliverable": "production/renders/030.mp4",
+      "story": "Tohumlar yapraklara savrulur"
+    },
+    {
+      "id": "040",
+      "start_seconds": 155,
+      "end_seconds": 220,
+      "deliverable": "production/renders/040.mp4",
+      "story": "Su çarkı zincirleme komedisi"
+    },
+    {
+      "id": "050",
+      "start_seconds": 220,
+      "end_seconds": 285,
+      "deliverable": "production/renders/050.mp4",
+      "story": "Lila çözümü bulur"
+    },
+    {
+      "id": "060",
+      "start_seconds": 285,
+      "end_seconds": 355,
+      "deliverable": "production/renders/060.mp4",
+      "story": "Dönen saksı ve yardımlaşma"
+    },
+    {
+      "id": "070",
+      "start_seconds": 355,
+      "end_seconds": 405,
+      "deliverable": "production/renders/070.mp4",
+      "story": "Filizlenme ve sabır"
+    },
+    {
+      "id": "080",
+      "start_seconds": 405,
+      "end_seconds": 420,
+      "deliverable": "production/renders/080.mp4",
+      "story": "Bobo'nun davulunda final esprisi"
+    }
+  ],
+  "audio": {
+    "music_master": "production/audio/music_original.wav",
+    "sfx_master": "production/audio/effects_licensed.wav",
+    "dialogue_master": "production/audio/dialogue_tr.wav",
+    "mix_master": "production/audio/final_mix.wav",
+    "license_register": "production/audio/licenses.json"
+  },
+  "subtitles": {
+    "tr": "production/subtitles/S01E01_tr.srt"
+  },
+  "master_output": "production/masters/S01E01_final_1080p.mp4",
+  "checks": [
+    "character_consistency",
+    "true_3d_animation",
+    "acting_and_timing",
+    "originality_rights",
+    "child_safety",
+    "no_adult_content",
+    "pedagogical_review",
+    "audio_mixing",
+    "technical_playback",
+    "human_signoff"
+  ]
+}
