@@ -1,0 +1,39 @@
+name: Lion Cartoons Scene03 Character Acting
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'production/blender/scene03_character_acting.py'
+      - '.github/workflows/render-scene03.yml'
+permissions:
+  contents: read
+jobs:
+  animation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender ffmpeg
+      - name: Check Python
+        run: python -m py_compile production/blender/scene03_character_acting.py
+      - name: Render animated frames
+        run: |
+          blender -b -t 2 --python production/blender/scene03_character_acting.py
+          test -s production/blender/output/scene03_frame_0001.png
+      - name: Encode and validate MP4
+        run: |
+          ffmpeg -hide_banner -loglevel error -y -framerate 24 -start_number 1 -i production/blender/output/scene03_frame_%04d.png -c:v libx264 -pix_fmt yuv420p production/blender/output/scene03.mp4
+          ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1 production/blender/output/scene03.mp4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lion-scene03-acting-test
+          path: |
+            production/blender/output/scene03.mp4
+            production/blender/output/scene03.blend
+          if-no-files-found: warn
+          retention-days: 14
