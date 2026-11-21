@@ -1,0 +1,30 @@
+name: Render 3D motion proof-of-concept
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and FFmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender ffmpeg
+          blender -b --factory-startup --python-expr 'import bpy; print("BLENDER_VERSION:",bpy.app.version_string)'
+      - name: Render five-second 3D animation
+        run: |
+          blender -b -t 2 --python production/blender/scene01_blender.py
+          test -s production/blender/output/scene01_preview.mp4
+          ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1 production/blender/output/scene01_preview.mp4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lion-cartoons-3d-scene01
+          path: |
+            production/blender/output/scene01_preview.mp4
+            production/blender/output/scene01.blend
+          if-no-files-found: warn
+          retention-days: 14
