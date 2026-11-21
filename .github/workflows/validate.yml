@@ -1,0 +1,20 @@
+name: Validate project
+on:
+  push:
+  pull_request:
+jobs:
+  basic-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate scripts
+        run: |
+          python -m compileall -q scripts
+      - name: Check forbidden committed credentials
+        run: |
+          if git ls-files | grep -E '(^|/)(client_secret\.json|token\.json|\.env)$'; then
+            echo "Forbidden sensitive file committed"; exit 1
+          fi
