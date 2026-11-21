@@ -13,10 +13,8 @@ s.cycles.samples = 4
 s.frame_start, s.frame_end, s.render.fps = 1, 24, 24
 s.render.resolution_x, s.render.resolution_y = 320, 180
 s.render.resolution_percentage = 100
-s.render.image_settings.file_format = "FFMPEG"
-s.render.ffmpeg.format = "MPEG4"
-s.render.ffmpeg.codec = "H264"
-s.render.filepath = str(out / "scene01_preview.mp4")
+s.render.image_settings.file_format = "PNG"
+s.render.filepath = str(out / "scene01_frame_")
 def material(name, col):
     m=bpy.data.materials.new(name);m.diffuse_color=(*col,1)
     m.use_nodes=True
