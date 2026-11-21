@@ -6,7 +6,9 @@ p.mkdir(exist_ok=True)
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene
-s.render.engine = "CYCLES"\ns.cycles.device = "CPU"\ns.cycles.samples = 4
+s.render.engine = "CYCLES"
+s.cycles.device = "CPU"
+s.cycles.samples = 4
 s.frame_start=1; s.frame_end=24; s.render.fps=24
 s.render.resolution_x=320; s.render.resolution_y=180
 s.render.image_settings.file_format='FFMPEG'
