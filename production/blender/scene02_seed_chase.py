@@ -6,9 +6,9 @@ p.mkdir(exist_ok=True)
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
 s=bpy.context.scene
-s.render.engine='BLENDER_EEVEE_NEXT' if bpy.app.version >= (4,2,0) else 'BLENDER_EEVEE'
-s.frame_start=1; s.frame_end=240; s.render.fps=24
-s.render.resolution_x=960; s.render.resolution_y=540
+s.render.engine = "CYCLES"\ns.cycles.device = "CPU"\ns.cycles.samples = 4
+s.frame_start=1; s.frame_end=24; s.render.fps=24
+s.render.resolution_x=320; s.render.resolution_y=180
 s.render.image_settings.file_format='FFMPEG'
 s.render.ffmpeg.format='MPEG4'; s.render.ffmpeg.codec='H264'
 s.render.filepath=str(p/'scene02.mp4')
