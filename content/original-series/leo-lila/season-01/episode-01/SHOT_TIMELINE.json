@@ -1,0 +1,63 @@
+{
+  "project": "Lion Cartoons",
+  "series": "Leo & Lila",
+  "episode": "S01E01",
+  "title": "Uçan Tohumlar",
+  "target_fps": 24,
+  "target_resolution": [
+    1920,
+    1080
+  ],
+  "status": "preproduction",
+  "shots": [
+    {
+      "id": "S01",
+      "time": "00:00-00:35",
+      "beat": "Bahçe ve karakter tanıtımı",
+      "camera": "moving wide"
+    },
+    {
+      "id": "S02",
+      "time": "00:35-01:30",
+      "beat": "Tohum ekme icadı",
+      "camera": "medium to insert"
+    },
+    {
+      "id": "S03",
+      "time": "01:30-02:35",
+      "beat": "Tohumların yapraklara savrulması",
+      "camera": "tracking"
+    },
+    {
+      "id": "S04",
+      "time": "02:35-03:40",
+      "beat": "Su çarkında zincirleme komedi",
+      "camera": "follow pan"
+    },
+    {
+      "id": "S05",
+      "time": "03:40-04:45",
+      "beat": "Lila'nın çözümü",
+      "camera": "two shot"
+    },
+    {
+      "id": "S06",
+      "time": "04:45-05:55",
+      "beat": "Saksı aksiliği ve yardım",
+      "camera": "wide to close"
+    },
+    {
+      "id": "S07",
+      "time": "05:55-06:45",
+      "beat": "Tohum filizlenme zaman geçişi",
+      "camera": "montage"
+    },
+    {
+      "id": "S08",
+      "time": "06:45-07:00",
+      "beat": "Bobo davulunda filiz finali",
+      "camera": "punchline close-up"
+    }
+  ],
+  "release_approved": false
+}
