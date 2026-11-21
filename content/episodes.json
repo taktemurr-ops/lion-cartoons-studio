@@ -1,0 +1,88 @@
+[
+  {
+    "id": "LC-KIDS-S01E01",
+    "series": "Lion Kids",
+    "season": 1,
+    "episode": 1,
+    "title_tr": "Leo ve Kayıp Gökkuşağı",
+    "age_min": 3,
+    "age_max": 6,
+    "language_source": "tr",
+    "themes": [
+      "renkler",
+      "dayanışma"
+    ],
+    "status": "script_draft",
+    "script": "content/lion-kids/season-01/episode-01/script_tr.md",
+    "master_video": null,
+    "qa_approved": false
+  },
+  {
+    "id": "LC-BABY-S01E01",
+    "series": "Lion Baby",
+    "season": 1,
+    "episode": 1,
+    "title_tr": "Minik Sesler Bahçesi",
+    "age_min": 0,
+    "age_max": 3,
+    "language_source": "tr",
+    "themes": [
+      "doğa sesleri",
+      "ilk kelimeler"
+    ],
+    "status": "planned",
+    "master_video": null,
+    "qa_approved": false
+  },
+  {
+    "id": "LC-MUSIC-S01E01",
+    "series": "Lion Music",
+    "season": 1,
+    "episode": 1,
+    "title_tr": "Yağmur Damlası Şarkısı",
+    "age_min": 3,
+    "age_max": 8,
+    "language_source": "tr",
+    "themes": [
+      "doğa",
+      "ritim"
+    ],
+    "status": "planned",
+    "master_video": null,
+    "qa_approved": false
+  },
+  {
+    "id": "LC-ACADEMY-S01E01",
+    "series": "Lion Academy",
+    "season": 1,
+    "episode": 1,
+    "title_tr": "Gölge Nasıl Oluşur?",
+    "age_min": 5,
+    "age_max": 10,
+    "language_source": "tr",
+    "themes": [
+      "ışık",
+      "bilim"
+    ],
+    "status": "planned",
+    "master_video": null,
+    "qa_approved": false
+  },
+  {
+    "id": "LC-STORIES-S01E01",
+    "series": "Lion Stories",
+    "season": 1,
+    "episode": 1,
+    "title_tr": "Uykuya Hazırlanan Küçük Yıldız",
+    "age_min": 2,
+    "age_max": 7,
+    "language_source": "tr",
+    "themes": [
+      "uyku rutini",
+      "sakinleşme"
+    ],
+    "status": "planned",
+    "master_video": null,
+    "qa_approved": false
+  }
+]
