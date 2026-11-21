@@ -1,0 +1,32 @@
+name: Scene 02 Three Dimensional Movement Test
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'production/blender/scene02_seed_chase.py'
+      - '.github/workflows/render-scene02.yml'
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender and ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y blender ffmpeg
+      - name: Render ten-second 3D animation
+        run: |
+          blender -b -t 2 --python production/blender/scene02_seed_chase.py
+          test -s production/blender/output/scene02.mp4
+          ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1 production/blender/output/scene02.mp4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: scene02-3d-proof
+          path: production/blender/output/
+          retention-days: 14
+          if-no-files-found: warn
