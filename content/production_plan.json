@@ -1,0 +1,16 @@
+{
+  "brand": "Lion Cartoons",
+  "channel": "@LionCartoonsWorld",
+  "language_strategy": "Multi-language, editorial review before release",
+  "series": [
+    {"name": "Lion Baby", "age": "0-3", "format": "gentle early learning"},
+    {"name": "Lion Kids", "age": "3-6", "format": "learning adventures"},
+    {"name": "Lion Adventures", "age": "6-10", "format": "exploration"},
+    {"name": "Lion Universe", "age": "10+", "format": "age appropriate science fiction"},
+    {"name": "Lion Music", "age": "all appropriate", "format": "original songs"},
+    {"name": "Lion Academy", "age": "3-12", "format": "education"},
+    {"name": "Lion Stories", "age": "2-10", "format": "stories"}
+  ],
+  "status": "planned; not published",
+  "release_gate": ["originality", "copyright", "age_safety", "accuracy", "audio_qa", "visual_qa", "made_for_kids"]
+}
