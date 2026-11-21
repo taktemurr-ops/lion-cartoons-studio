@@ -1,0 +1,53 @@
+name: Lion Cartoons - Assemble first 3D animated proof
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'production/post/score.py'
+      - '.github/workflows/assemble-first-preview.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download successful three 3D renders
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p output/s1 output/s2 output/s3
+          gh run download 44910668575 --repo "${{ github.repository }}" --name lion-cartoons-3d-scene01 --dir output/s1
+          gh run download 44910671801 --repo "${{ github.repository }}" --name scene02-3d-proof --dir output/s2
+          gh run download 44911007935 --repo "${{ github.repository }}" --name lion-scene03-acting-test --dir output/s3
+          find output -type f -printf "%p %k KB\\n"
+      - name: Prepare video clips and music
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          mkdir -p output/final
+          python production/post/score.py --seconds 5 --output output/final/original_score.wav
+          for pair in 's1 scene01_preview' 's2 scene02' 's3 scene03'; do
+            set -- $pair
+            src=$(find "output/$1" -type f -name "$2.mp4" -print -quit)
+            test -n "$src"
+            ffmpeg -hide_banner -loglevel error -y -i "$src" -vf "fps=24,scale=960:540:force_original_aspect_ratio=decrease,pad=960:540:(ow-iw)/2:(oh-ih)/2,setsar=1" -an -c:v libx264 -pix_fmt yuv420p "output/final/$1.mp4"
+          done
+      - name: Assemble moving 3D scenes with original score
+        run: |
+          printf "file 's1.mp4'\\nfile 's2.mp4'\\nfile 's3.mp4'\\n" > output/final/concat.txt
+          ffmpeg -hide_banner -loglevel error -y -f concat -safe 0 -i output/final/concat.txt -i output/final/original_score.wav -map 0:v -map 1:a -c:v libx264 -c:a aac -b:a 128k -shortest -pix_fmt yuv420p output/final/lion_cartoons_3d_technical_preview.mp4
+          test -s output/final/lion_cartoons_3d_technical_preview.mp4
+          ffprobe -v error -show_entries format=duration,size -of default=noprint_wrappers=1 output/final/lion_cartoons_3d_technical_preview.mp4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lion-cartoons-3d-combined-technical-preview
+          path: |
+            output/final/lion_cartoons_3d_technical_preview.mp4
+            output/final/original_score.wav
+          if-no-files-found: warn
+          retention-days: 30
