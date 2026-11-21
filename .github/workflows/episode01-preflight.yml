@@ -1,0 +1,28 @@
+name: LC Episode 01 production preflight
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'production/quality/**'
+      - '.github/workflows/episode01-preflight.yml'
+permissions:
+  contents: read
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate planned episode and report gaps
+        run: python production/quality/check_episode.py
+      - name: Ensure incomplete episode CANNOT be released
+        run: |
+          if python production/quality/check_episode.py --release; then
+            echo 'Unexpected: incomplete episode passed release gate'
+            exit 1
+          else
+            echo 'Expected: missing studio assets correctly block release'
+          fi
