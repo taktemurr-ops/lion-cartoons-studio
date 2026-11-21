@@ -11,9 +11,8 @@ s.cycles.device = "CPU"
 s.cycles.samples = 4
 s.frame_start=1; s.frame_end=24; s.render.fps=24
 s.render.resolution_x=320; s.render.resolution_y=180
-s.render.image_settings.file_format='FFMPEG'
-s.render.ffmpeg.format='MPEG4'; s.render.ffmpeg.codec='H264'
-s.render.filepath=str(p/'scene02.mp4')
+s.render.image_settings.file_format = "PNG"
+s.render.filepath = str(p / "scene02_frame_")
 def mat(name,color):
  m=bpy.data.materials.new(name); m.diffuse_color=(*color,1); return m
 gold=mat('Leo gold',(.95,.49,.07))
